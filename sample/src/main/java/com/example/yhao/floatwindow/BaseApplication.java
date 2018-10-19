@@ -5,6 +5,7 @@ import android.os.Build;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,9 +30,9 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        ImageView imageView = new ImageView(getApplicationContext());
-        imageView.setImageResource(R.drawable.icon);
-
+//        ImageView imageView = new ImageView(getApplicationContext());
+//        imageView.setImageResource(R.drawable.icon);
+EditText imageView = new EditText(getApplicationContext());
         FloatWindow
                 .with(getApplicationContext())
                 .setView(imageView)
@@ -54,6 +55,7 @@ public class BaseApplication extends Application {
                 Toast.makeText(BaseApplication.this, "onClick", Toast.LENGTH_SHORT).show();
             }
         });
+        imageView.requestFocus();
     }
 
     private PermissionListener mPermissionListener = new PermissionListener() {

@@ -29,7 +29,7 @@ class FloatPhone extends FloatView {
         mLayoutParams = new WindowManager.LayoutParams();
         mLayoutParams.format = PixelFormat.RGBA_8888;
         mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+//                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                 | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
         mLayoutParams.windowAnimations = 0;
     }
