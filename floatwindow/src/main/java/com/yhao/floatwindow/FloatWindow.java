@@ -19,6 +19,7 @@ import java.util.Map;
  */
 
 public class FloatWindow {
+    public static final int FLAGS_FOCUSED = 0;
 
     private FloatWindow() {
 
@@ -74,6 +75,9 @@ public class FloatWindow {
         boolean mDesktopShow;
         PermissionListener mPermissionListener;
         ViewStateListener mViewStateListener;
+        Integer flags;
+
+        boolean focused;
 
         private B() {
 
@@ -143,6 +147,10 @@ public class FloatWindow {
             return this;
         }
 
+        public B setFlags(int flags) {
+            this.flags = flags;
+            return this;
+        }
 
         /**
          * 设置 Activity 过滤器，用于指定在哪些界面显示悬浮窗，默认全部界面都显示
@@ -218,5 +226,9 @@ public class FloatWindow {
             mFloatWindowMap.put(mTag, floatWindowImpl);
         }
 
+        public B setFocused(boolean focused) {
+            this.focused = focused;
+            return this;
+        }
     }
 }

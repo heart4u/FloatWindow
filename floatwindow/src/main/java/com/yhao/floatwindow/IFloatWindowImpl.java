@@ -52,6 +52,10 @@ public class IFloatWindowImpl extends IFloatWindow {
             mFloatView = new FloatPhone(b.mApplicationContext, mB.mPermissionListener);
             initTouchEvent();
         }
+        if (mB.flags != null) {
+            mFloatView.setFlags(mB.flags);
+        }
+        mFloatView.setFocused(mB.focused);
         mFloatView.setSize(mB.mWidth, mB.mHeight);
         mFloatView.setGravity(mB.gravity, mB.xOffset, mB.yOffset);
         mFloatView.setView(mB.mView);
@@ -111,6 +115,11 @@ public class IFloatWindowImpl extends IFloatWindow {
     @Override
     public boolean isShowing() {
         return isShow;
+    }
+
+    @Override
+    public void setFlags(int flags) {
+        mFloatView.setFlags(flags);
     }
 
     @Override

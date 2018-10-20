@@ -7,7 +7,7 @@ import android.view.View;
  * https://github.com/yhaolpz
  */
 
-abstract class FloatView {
+public abstract class FloatView {
 
     abstract void setSize(int width, int height);
 
@@ -18,6 +18,8 @@ abstract class FloatView {
     abstract void init();
 
     abstract void dismiss();
+
+    abstract void setFlags(int flags);
 
     void updateXY(int x, int y) {
     }
@@ -35,4 +37,6 @@ abstract class FloatView {
     int getY() {
         return 0;
     }
+
+    abstract void setFocused(boolean focused);
 }

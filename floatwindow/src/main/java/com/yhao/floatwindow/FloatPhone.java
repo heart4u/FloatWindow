@@ -11,7 +11,7 @@ import android.view.WindowManager;
  * https://github.com/yhaolpz
  */
 
-class FloatPhone extends FloatView {
+public class FloatPhone extends FloatView {
 
     private final Context mContext;
 
@@ -29,7 +29,7 @@ class FloatPhone extends FloatView {
         mLayoutParams = new WindowManager.LayoutParams();
         mLayoutParams.format = PixelFormat.RGBA_8888;
         mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-//                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                 | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
         mLayoutParams.windowAnimations = 0;
     }
@@ -122,6 +122,11 @@ class FloatPhone extends FloatView {
     }
 
     @Override
+    void setFlags(int flags) {
+        mLayoutParams.flags = flags;
+    }
+
+    @Override
     public void updateXY(int x, int y) {
         if (isRemove) return;
         mLayoutParams.x = mX = x;
@@ -151,6 +156,13 @@ class FloatPhone extends FloatView {
     @Override
     int getY() {
         return mY;
+    }
+
+    @Override
+    void setFocused(boolean focused) {
+        if (focused) {
+            mLayoutParams.flags |= WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        }
     }
 
 

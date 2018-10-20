@@ -32,7 +32,7 @@ public class BaseApplication extends Application {
 
 //        ImageView imageView = new ImageView(getApplicationContext());
 //        imageView.setImageResource(R.drawable.icon);
-EditText imageView = new EditText(getApplicationContext());
+        EditText imageView = new EditText(getApplicationContext());
         FloatWindow
                 .with(getApplicationContext())
                 .setView(imageView)
@@ -40,12 +40,13 @@ EditText imageView = new EditText(getApplicationContext());
                 .setHeight(Screen.width, 0.2f)
                 .setX(Screen.width, 0.8f)
                 .setY(Screen.height, 0.3f)
-                .setMoveType(MoveType.slide,100,-100)
+                .setMoveType(MoveType.slide, 100, -100)
                 .setMoveStyle(500, new BounceInterpolator())
                 .setFilter(true, A_Activity.class, C_Activity.class)
                 .setViewStateListener(mViewStateListener)
                 .setPermissionListener(mPermissionListener)
                 .setDesktopShow(true)
+                .setFocused(true)
                 .build();
 
 

@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
  * 当前版本暂时用 TYPE_TOAST 代替，后续版本可能会再融入此方式
  */
 
-class FloatToast extends FloatView {
+public class FloatToast extends FloatView {
 
 
     private Toast toast;
@@ -24,7 +24,7 @@ class FloatToast extends FloatView {
 
     private int mWidth;
     private int mHeight;
-
+    private WindowManager.LayoutParams params;
 
     FloatToast(Context applicationContext) {
         toast = new Toast(applicationContext);
@@ -66,6 +66,18 @@ class FloatToast extends FloatView {
         }
     }
 
+    @Override
+    void setFlags(int flags) {
+        params.flags = flags;
+    }
+
+    @Override
+    void setFocused(boolean focused) {
+        if (focused) {
+            params.flags |= WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        }
+    }
+
 
     private void initTN() {
         try {
@@ -76,9 +88,7 @@ class FloatToast extends FloatView {
             hide = mTN.getClass().getMethod("hide");
             Field tnParamsField = mTN.getClass().getDeclaredField("mParams");
             tnParamsField.setAccessible(true);
-            WindowManager.LayoutParams params = (WindowManager.LayoutParams) tnParamsField.get(mTN);
-//            params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-//                    | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+            params = (WindowManager.LayoutParams) tnParamsField.get(mTN);
             params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
             params.width = mWidth;
             params.height = mHeight;
