@@ -16,6 +16,8 @@ import com.yhao.floatwindow.PermissionListener;
 import com.yhao.floatwindow.Screen;
 import com.yhao.floatwindow.ViewStateListener;
 
+import dalvik.system.InMemoryDexClassLoader;
+
 /**
  * Created by yhao on 2017/12/18.
  * https://github.com/yhaolpz
@@ -48,7 +50,6 @@ public class BaseApplication extends Application {
                 .setDesktopShow(true)
                 .setFocused(true)
                 .build();
-
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
